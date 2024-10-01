@@ -1,0 +1,75 @@
+
+1. Installationsproblem med VMware 💻⚠️
+
+Jag försökte installera VMware Workstation Pro, men stötte på ett felmeddelande om att "Users is not a valid user or group". Jag insåg att något var fel med säkerhetsinställningarna eller mitt användarkonto.
+
+2. Försökte med administratörsrättigheter 👨‍💻🔑
+Jag såg till att köra installationen som administratör genom att högerklicka och välja "Kör som administratör". Tyvärr fungerade det inte heller.
+
+3. Felsäkert läge 🔧🛠️
+Efter det försökte jag starta i felsäkert läge för att undvika konflikter från andra program, men fick ett felmeddelande om att Windows Installer inte var tillgänglig i felsäkert läge.
+
+4. Aktivera Windows Installer i felsäkert läge ⚙️🔒
+Jag körde några kommandon i kommandotolken för att aktivera Windows Installer i felsäkert läge:
+
+
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\MSIServer" /VE /T REG_SZ /D "Service" /F
+net start msiserver
+Det fungerade till en början och jag fick meddelandet att "Åtgärden har slutförts". Men när jag försökte installera igen, fick jag fortfarande samma felmeddelande.
+
+5. Nästa steg: Felsäkert läge med nätverk 🌐🔍
+
+Jag insåg att det kan behövas att köra i felsäkert läge med nätverk, så jag la till Windows Installer-tjänsten i nätverksläget med följande kommando:
+
+
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot\Network\MSIServer" /VE /T REG_SZ /D "Service" /F
+net start msiserver
+6. Slutsats 📝🚀
+Även om jag har gjort flera försök, lyckades jag inte installera VMware i felsäkert läge. Nästa steg är att undersöka om det finns fler blockeringar eller problem genom att starta i felsäkert läge med nätverk och köra installationen därifrån.
+
+Nu har jag en bra överblick över alla steg jag tog idag och vad som återstår att prova!
+
+-------------------------------------------------------------------------------------------------
+
+1. Starta i felsäkert läge med nätverk 🌐⚙️
+Jag ska börja med att starta datorn i felsäkert läge med nätverk. Det gör att jag kan ladda alla nödvändiga drivrutiner och tjänster, inklusive Windows Installer-tjänsten, vilket kan lösa problemet.
+
+Så här gör jag:
+Öppna Systemkonfiguration (msconfig).
+Gå till fliken Systemstart och välj "Felsäkert läge med nätverk".
+Starta om datorn och prova att köra installationen av VMware igen.
+2. Kör VMware-installationen som administratör 👨‍💻🔑
+När jag har startat i felsäkert läge med nätverk, ska jag köra VMware-installationen som administratör för att säkerställa att den har tillräckliga rättigheter.
+
+Så här gör jag:
+Högerklicka på installationsfilen och välj "Kör som administratör".
+3. Använda MSI-installation via kommandotolken 🛠️
+Om standardinstallationen fortfarande inte fungerar, ska jag försöka installera med MSI-versionen av VMware genom kommandotolken.
+
+Så här gör jag:
+Hitta MSI-installationsfilen på VMware
+webbplats.
+Öppna Kommandotolken som administratör.
+Kör kommandot:
+cmd
+Kopiera kod
+msiexec /i "path\to\VMwareInstaller.msi" /L*v logfile.txt
+Ändra "path\to\VMwareInstaller.msi" till platsen där jag sparat MSI-filen.
+4. Kontrollera om Windows Installer är igång 🔧
+Jag ska också se till att Windows Installer-tjänsten körs korrekt i felsäkert läge.
+
+Så här gör jag:
+Öppna kommandotolken och kör:
+cmd
+Kopiera kod
+sc query msiserver
+Om tjänsten inte är igång, kör jag:
+cmd
+Kopiera kod
+net start msiserver
+5. Testa installationen på ett nytt administratörskonto 👤🆕
+Om inget av ovanstående fungerar, kan jag skapa ett nytt administratörskonto och försöka köra installationen därifrån, ifall det är problem med användarrättigheterna på mitt nuvarande konto.
+
+Så här gör jag:
+Gå till Kontoinställningar och skapa ett nytt administratörskonto.
+Logga in på det nya kontot och prova att installera VMware igen.
