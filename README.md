@@ -17,7 +17,7 @@ Use these license keys to explore VMware vSphere for educational and non-commerc
 Contribute to the repository to help keep it updated and useful.
 Engage with the community by sharing feedback and tips.
 
-Don'ts  ❌
+Don'ts   ❌
 
 Do not use these keys for commercial purposes or in production environments.
 Do not distribute the keys outside of this repository.
