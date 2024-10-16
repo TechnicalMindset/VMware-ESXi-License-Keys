@@ -26,7 +26,7 @@ Note: Always check for updates and contribute responsibly to ensure the integrit
 
 
 
-VMware License Key Table
+💡 VMware License Key Table 💡
 
 <table style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif;">
   <thead>
