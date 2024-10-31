@@ -1,3 +1,6 @@
+
+![Logo](https://img.shields.io/badge/-Mindset-ffffff?logo=data:image/png;base64,**YOUR_BASE64_ENCODED_IMAGE_HERE**&style=for-the-badge&logoColor=black&labelColor=white) 
+
 # VMware-ESXi-License-Keys
 
 🎉 Welcome to VMware vSphere 6 and 7 ESXi License Keys 🎉
